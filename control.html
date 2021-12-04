@@ -13,17 +13,14 @@
     <v-app>
       <v-main>
         <div style="margin: 0 auto; padding: 16px; max-width: 400px;">
-          <div>
-            <v-combobox v-model="radio" :items="radioItems" label="ラジオタイトル"></v-combobox>
-          </div>
 
-          <div>
-            <v-combobox v-model="stage" :items="stageItems" label="ステージタイトル"></v-combobox>
-          </div>
+          <v-combobox v-model="radio_title" :items="radio_title_items" label="ラジオタイトル"></v-combobox>
+          <v-combobox v-model="radio_personality" :items="radio_personality_items" label="ラジオパーソナリティ" multiple></v-combobox>
 
-          <div>
-            <v-combobox v-model="performers" :items="performerItems" label="ステージ出演者" multiple></v-combobox>
-          </div>
+          <v-combobox v-model="stage_title" :items="stage_title_items" label="ステージタイトル"></v-combobox>
+          <v-combobox v-model="stage_sub_title" :items="stage_sub_title_items" label="ステージ詳細（曲名など）"></v-combobox>
+          <v-combobox v-model="stage_performer" :items="stage_performer_items" label="ステージ出演者" multiple></v-combobox>
+
         </div>
       </v-main>
     </v-app>
@@ -38,39 +35,42 @@
 
       data() {
         return {
-          radio: "",
-          radioItems: [
-            "お便り紹介",
+          radio_title: "",
+          radio_title_items: [
+            "お便り紹介コーナー",
             "ゲストインタビュー",
           ],
 
-          stage: "",
-          stageItems: [
-            "歌",
-            "ダンス",
-            "ゲーム大会"
+          radio_personality: [],
+          radio_personality_items: [
+            "木幡MC",
+            "中村MC",
+            "平野MC",
+            "森田",
+            "渡辺",
+            "小尾",
+            "宮田",
           ],
 
-          performers: [],
-          performerItems: [
-            "Aさん",
-            "Bさん",
-            "Cさん"
+          stage_title: "",
+          stage_title_items: [
+            "歌",
+            "バンド",
+            "ダンス",
+            "ゲーム大会",
+            "政治部プレゼン",
+            "フォトコンテスト授賞式",
           ],
+
+          stage_sub_title: "",
+          stage_sub_title_items: [],
+
+          stage_performer: [],
+          stage_performer_items: [],
         }
       },
 
       watch: {
-        radio(n, o) {
-          fetch(`https://api.tomoharu.dev/cf-server/set/radio/${n}`)
-        },
-        stage(n, o) {
-          fetch(`https://api.tomoharu.dev/cf-server/set/stage/${n}`)
-        },
-        performers(n, o) {
-          fetch(`https://api.tomoharu.dev/cf-server/set/performers/${n.join(", ")}`)
-        }
-
       }
     })
   </script>
