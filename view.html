@@ -1,23 +1,63 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 
 <head>
   <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/@mdi/font@6.x/css/materialdesignicons.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+  <style>
+    * {
+      box-sizing: border-box;
+      color: #222222;
+    }
+  </style>
 </head>
 
 <body>
   <div id="app">
     <v-app>
       <v-main>
-        <div class="d-flex justify-center align-center" style="font-size: 2em;">
-          <div>
-            ただ今の <br>
-            　ラジオコーナー：　{{data.radio}} <br>
-            　ステージ：　　　　{{data.stage}} <br>
-            　ステージ出演者：　{{data.performers}} <br>
+        <div class="d-flex justify-center align-center" style="font-size: 2em; height: 100vh;">
+          <div style="width: 100vw; height: calc(100vw * (9/16)); border: solid 2px black;">
+            <div style="width: 100%; height: 50%;">
+              <div class="d-flex align-center" style="width: 100%; height: 30%; padding: 0 4%;">
+                <div style="font-size: 1.2em;">
+                  キャンフェスラジオ「横浜FC」
+                </div>
+              </div>
+              <div class="d-flex justify-center align-center" style="width: 100%; height: 60%;">
+                <div>
+                  <div style="text-align: center; margin: -0.2em 0; font-size: 2em;">
+                    Hello World
+                  </div>
+                  <hr>
+                  <div style="text-align: center; font-size: 1.3em;">
+                    (Staff 1, Staff 2, Staff 3)
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div style="width: 100%; height: 50%; ">
+              <hr>
+              <div style="width: 100%; height: 3%;"></div>
+              <div class="d-flex align-center" style="width: 100%; height: 25%; padding: 0 4%;">
+                <div>
+                  現在のメインステージ
+                </div>
+              </div>
+              <div class="d-flex justify-center align-center" style="width: 100%; height: 60%;">
+                <div>
+                  <div style="text-align: center; margin: -0.1em 0; font-size: 1.5em;">
+                    Hello World
+                  </div>
+                  <hr>
+                  <div style="text-align: center; font-size: 1.1em;">
+                    (Staff 1, Staff 2, Staff 3)
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </v-main>
