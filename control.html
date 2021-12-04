@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/@mdi/font@6.x/css/materialdesignicons.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+</head>
+
+<body>
+  <div id="app">
+    <v-app>
+      <v-main>
+        <div style="margin: 0 auto; padding: 16px; max-width: 400px;">
+          <div>
+            <v-combobox v-model="radio" :items="radioItems" label="ラジオタイトル"></v-combobox>
+          </div>
+
+          <div>
+            <v-combobox v-model="stage" :items="stageItems" label="ステージタイトル"></v-combobox>
+          </div>
+
+          <div>
+            <v-combobox v-model="performers" :items="performerItems" label="ステージ出演者" multiple></v-combobox>
+          </div>
+        </div>
+      </v-main>
+    </v-app>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      vuetify: new Vuetify(),
+
+      data() {
+        return {
+          radio: "",
+          radioItems: [
+            "お便り紹介",
+            "ゲストインタビュー",
+          ],
+
+          stage: "",
+          stageItems: [
+            "歌",
+            "ダンス",
+            "ゲーム大会"
+          ],
+
+          performers: [],
+          performerItems: [
+            "Aさん",
+            "Bさん",
+            "Cさん"
+          ],
+        }
+      },
+
+      watch: {
+        radio(n, o) {
+          fetch(`https://api.tomoharu.dev/cf-server/set/radio/${n}`)
+        },
+        stage(n, o) {
+          fetch(`https://api.tomoharu.dev/cf-server/set/stage/${n}`)
+        },
+        performers(n, o) {
+          fetch(`https://api.tomoharu.dev/cf-server/set/performers/${n.join(", ")}`)
+        }
+
+      }
+    })
+  </script>
+</body>
+
+</html>

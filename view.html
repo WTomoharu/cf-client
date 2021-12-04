@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/@mdi/font@6.x/css/materialdesignicons.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+</head>
+
+<body>
+  <div id="app">
+    <v-app>
+      <v-main>
+        ただ今の <br>
+        ラジオコーナー: {{data.radio}} <br>
+        ステージ: {{data.stage}} <br>
+        ステージ出演者: {{data.performers}} <br>
+      </v-main>
+    </v-app>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      vuetify: new Vuetify(),
+
+      data() {
+        return {
+          data: {}
+        }
+      },
+
+      async mounted() {
+        // var ws = new WebSocket("ws://api.tomoharu.dev/cf-server/ws/")
+        // ws.onmessage = function (event) {
+        //   this.data = JSON.parse(event.data)
+        // }
+
+        while (true) {
+          res = await fetch("https://api.tomoharu.dev/cf-server/get").then(res => res.json())
+          console.log(res)
+          this.data = {...this.data, ...res}
+          await new Promise(r => setTimeout(r, 1000))
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
