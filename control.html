@@ -71,6 +71,21 @@
       },
 
       watch: {
+        radio_title(n, o) {
+          fetch(`https://api.tomoharu.dev/cf-server/set/radio_title/${n}`)
+        },
+        radio_personality(n, o) {
+          fetch(`https://api.tomoharu.dev/cf-server/set/radio_personality/${n.join(", ")}`)
+        },
+        stage_title(n, o) {
+          fetch(`https://api.tomoharu.dev/cf-server/set/stage_title/${n}`)
+        },
+        stage_sub_title(n, o) {
+          fetch(`https://api.tomoharu.dev/cf-server/set/stage_sub_title/${n}`)
+        },
+        stage_performer(n, o) {
+          fetch(`https://api.tomoharu.dev/cf-server/set/stage_performer/${n.join(", ")}`)
+        },
       }
     })
   </script>
