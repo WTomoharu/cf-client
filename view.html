@@ -12,10 +12,14 @@
   <div id="app">
     <v-app>
       <v-main>
-        ただ今の <br>
-        ラジオコーナー: {{data.radio}} <br>
-        ステージ: {{data.stage}} <br>
-        ステージ出演者: {{data.performers}} <br>
+        <div class="d-flex justify-center align-center" style="font-size: 2em;">
+          <div>
+            ただ今の <br>
+            　ラジオコーナー：　{{data.radio}} <br>
+            　ステージ：　　　　{{data.stage}} <br>
+            　ステージ出演者：　{{data.performers}} <br>
+          </div>
+        </div>
       </v-main>
     </v-app>
   </div>
@@ -42,7 +46,7 @@
         while (true) {
           res = await fetch("https://api.tomoharu.dev/cf-server/get").then(res => res.json())
           console.log(res)
-          this.data = {...this.data, ...res}
+          this.data = { ...this.data, ...res }
           await new Promise(r => setTimeout(r, 1000))
         }
       }
