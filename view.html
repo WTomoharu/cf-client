@@ -86,7 +86,7 @@
         while (true) {
           res = await fetch("https://api.tomoharu.dev/cf-server/get").then(res => res.json())
           console.log(res)
-          this.data = { ...this.data, ...res }
+          this.data = res
           await new Promise(r => setTimeout(r, 1000))
         }
       }
