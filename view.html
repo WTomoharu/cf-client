@@ -33,7 +33,7 @@
                   </div>
                   <hr>
                   <div style="text-align: center; font-size: 1.3em;">
-                    （{{data.radio_personality}}）
+                    {{data.radio_personality ? `（${data.radio_personality}）` : ""}}
                   </div>
                 </div>
               </div>
@@ -53,7 +53,7 @@
                   </div>
                   <hr>
                   <div style="text-align: center; font-size: 1.1em;">
-                    （{{data.stage_performer}}）
+                    {{data.stage_performer ? `（${data.stage_performer}）` : ""}}
                   </div>
                 </div>
               </div>
